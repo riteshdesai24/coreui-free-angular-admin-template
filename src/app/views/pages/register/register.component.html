@@ -4,33 +4,69 @@
       <c-col lg="7" md="9" xl="6">
         <c-card class="mx-4">
           <c-card-body class="p-4">
-            <form cForm>
+            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" cForm>
               <h1>Register</h1>
               <p class="text-body-secondary">Create your account</p>
               <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilUser"></svg>
                 </span>
-                <input autoComplete="name" cFormControl placeholder="Username" />
+                <input autoComplete="name" formControlName="name" cFormControl placeholder="Dr Name" />
               </c-input-group>
+              @if(registrationForm.controls['name'].errors?.['required'] && registrationForm.controls['name'].touched) {
+                <div class="text-danger">
+                  Please provide a name.
+                </div>
+              }
               <c-input-group class="mb-3">
                 <span cInputGroupText>&#64;</span>
-                <input autoComplete="email" cFormControl placeholder="Email" />
+                <input autoComplete="email" formControlName="email" cFormControl placeholder="Email" />
               </c-input-group>
+              @if(registrationForm.controls['email'].errors?.['required'] && registrationForm.controls['email'].touched) {
+                <div class="text-danger">
+                  Please provide a Email Id.
+                </div>
+              } @else if (registrationForm.controls['email'].errors?.['email'] && registrationForm.controls['email'].touched) {
+                <div class="text-danger">
+                  Please provide a valid Email Id.
+                </div>
+              }
+              <c-input-group class="mb-4">
+                <span cInputGroupText>
+                  <svg cIcon name="cilmobile"></svg>
+                </span>
+                <input autoComplete="new-password" formControlName="mobile" cFormControl placeholder="Mobile No" type="number" />
+              </c-input-group>
+              @if(registrationForm.controls['mobile'].errors?.['required'] && registrationForm.controls['mobile'].touched) {
+                <div class="text-danger">
+                  Please provide a Mobile Number.
+                </div>
+              } @else if (registrationForm.controls['mobile'].errors?.['minlength'] && registrationForm.controls['mobile'].touched) {
+                <div class="text-danger">
+                  Please provide a valid mobile no.
+                </div>
+              } @else if (registrationForm.controls['mobile'].errors?.['maxlength'] && registrationForm.controls['mobile'].touched) {
+                <div class="text-danger">
+                  Please provide a valid mobile no.
+                </div>
+              }
               <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
                 </span>
-                <input autoComplete="new-password" cFormControl placeholder="Password" type="password" />
+                <input autoComplete="new-password" formControlName="password" cFormControl placeholder="Password" type="password" />
               </c-input-group>
-              <c-input-group class="mb-4">
-                <span cInputGroupText>
-                  <svg cIcon name="cilLockLocked"></svg>
-                </span>
-                <input autoComplete="new-password" cFormControl placeholder="Repeat password" type="password" />
-              </c-input-group>
+              @if(registrationForm.controls['password'].errors?.['required'] && registrationForm.controls['password'].touched) {
+                <div class="text-danger">
+                  Please provide a Password.
+                </div>
+              } @else if (registrationForm.controls['password'].errors?.['minlength'] && registrationForm.controls['password'].touched) {
+                <div class="text-danger">
+                  Please provide a password of length as 15 characters.
+                </div>
+              }
               <div class="d-grid">
-                <button cButton color="success">Create Account</button>
+                <button cButton color="success" type="submit">Create Account</button>
               </div>
             </form>
           </c-card-body>
