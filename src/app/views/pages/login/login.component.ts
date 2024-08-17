@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgStyle } from '@angular/common';
 import { IconDirective } from '@coreui/icons-angular';
 import { ContainerComponent, RowComponent, ColComponent, CardGroupComponent, TextColorDirective, CardComponent, CardBodyComponent, FormDirective, InputGroupComponent, InputGroupTextDirective, FormControlDirective, ButtonDirective } from '@coreui/angular';
@@ -11,8 +11,15 @@ import { Router } from '@angular/router';
     standalone: true,
     imports: [ContainerComponent, RowComponent, ColComponent, CardGroupComponent, TextColorDirective, CardComponent, CardBodyComponent, FormDirective, InputGroupComponent, InputGroupTextDirective, IconDirective, FormControlDirective, ButtonDirective, NgStyle]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
-  constructor(private route: Router) { }
+  constructor(private router: Router) { }
+
+  ngOnInit() { }
+
+  register() {
+    this.router.navigate(['/register'])
+  }
+
 
 }

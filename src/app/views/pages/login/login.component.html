@@ -47,7 +47,7 @@
                 <p>
                   Dr. Doom is software designed to assist doctors by managing patient data, streamlining workflows, and supporting clinical decision-making.
                 </p>
-                <button [active]="true" cButton class="mt-3" color="primary" routerLink="/register">
+                <button [active]="true" (click)="register()" cButton class="mt-3" color="primary" routerLink="/register">
                   Register Now!
                 </button>
               </div>
