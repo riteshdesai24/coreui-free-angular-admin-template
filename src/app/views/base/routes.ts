@@ -116,7 +116,28 @@ export const routes: Routes = [
         data: {
           title: 'Tooltips'
         }
-      }
+      },
+      {
+        path: 'patients',
+        loadComponent: () => import('./appointments/appointments.component').then((m) => m.AppointmentsComponent),
+        data: {
+          title: 'Tabs'
+        }
+      },
+      {
+        path: 'patientdtl',
+        loadComponent: () => import('./patientdetail/patientdetail.component').then((m) => m.PatientdetailComponent),
+        data: {
+          title: 'Tabs'
+        }
+      },
+      {
+        path: 'appointments',
+        loadComponent: () => import('./patientlisting/patientlisting.component').then((m) => m.PatientlistingComponent),
+        data: {
+          title: 'Tabs'
+        }
+      },
     ]
   }
 ];
